@@ -1,0 +1,51 @@
+body {
+    background-color: #161616;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-family: 'Helvetica Neue', sans-serif; 
+}
+
+.threejs-background {
+    position: relative;
+    top: 5vh;
+    left: 5vh;
+    bottom: 5vh;
+    right: 5vh;
+}
+.name {
+    font-size: 3em;
+    font-weight: 100;
+    letter-spacing: 3px;
+    margin-bottom: 0;
+}
+
+.sub-name {
+    margin-top: 0;
+    font-size: 1em;
+    font-weight: 100;
+    margin-bottom: 3em;
+}
+
+.button {
+    font-size: 0.75em;
+    font-weight: 400;
+    letter-spacing: 0.75px;
+    cursor: pointer;
+    transition: color 0.2s;
+    margin-bottom: 2em;
+}
+
+.button:hover {
+    color: grey;
+}
+
+.rectangle {
+    position: absolute;
+    top: 5vh;
+    left: 5vh;
+    bottom: 5vh;
+    right: 5vh;
+    background-color: transparent;
+    border: 0.1vh solid white;
+}
