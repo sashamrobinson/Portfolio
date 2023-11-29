@@ -12,23 +12,30 @@ renderer.setSize(window.innerWidth * constantWidth, window.innerHeight * constan
 document.getElementById('scene-container').appendChild(renderer.domElement);
 
 // Create a particle geometry with round particles forming a sphere
-const particleCount = 5000;
+const particleCount = 10000;
 const particles = new THREE.BufferGeometry();
 
 // Create arrays to store the particle data
 const positions = new Float32Array(particleCount * 3);
 const colors = new Float32Array(particleCount * 3);
 
+// Define theta and phi outside the loop
+let thetaArray = [];
+let phiArray = [];
+
 // Set initial positions and colors for the particles forming a sphere
 for (let i = 0; i < particleCount; i++) {
   const i3 = i * 3;
-  const radius = 2;
+  const radius = 1;
 
   // Distribute particles evenly on the surface of a sphere
   const phi = Math.acos(-1 + (2 * i) / particleCount);
   const theta = Math.sqrt(particleCount * Math.PI) * phi;
 
-  const variation = 0.5
+  thetaArray.push(theta);
+  phiArray.push(phi);
+
+  const variation = 0.5;
 
   const x = radius * Math.cos(theta) * Math.sin(phi) + (Math.random() - 0.5) * variation;
   const y = radius * Math.sin(theta) * Math.sin(phi) + (Math.random() - 0.5) * variation;
@@ -44,7 +51,7 @@ particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 particles.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
 // Create a material with a shader that uses vertex colors
-const material = new THREE.PointsMaterial({ size: 0.02, vertexColors: THREE.VertexColors });
+const material = new THREE.PointsMaterial({ size: 0.01, vertexColors: THREE.VertexColors });
 
 // Create the particle system
 const particleSystem = new THREE.Points(particles, material);
@@ -55,13 +62,15 @@ camera.position.z = 5;
 
 // Animation function
 const animate = function () {
-  requestAnimationFrame(animate);
 
   // Rotate the particle system
-  particleSystem.rotation.y += 0.005;
+  particleSystem.rotation.z += 0.001;
+  particleSystem.rotation.y += 0.001;
   
   // Update the renderer
   renderer.render(scene, camera);
+
+  requestAnimationFrame(animate);
 };
 
 // Handle window resize
@@ -75,4 +84,5 @@ window.addEventListener('resize', () => {
 });
 
 // Start the animation loop
-animate();
+const timestamp = Date.now();
+animate(timestamp);

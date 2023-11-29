@@ -1,15 +1,36 @@
-document.getElementById('Information').addEventListener('click', function() {
-    displayContent("This is content 1.")
-});
+document.addEventListener('DOMContentLoaded', function () {
+    // Add click event listeners to your buttons
+    const informationButton = document.getElementById('Information');
+    const projectsButton = document.getElementById('Projects');
+    const contactButton = document.getElementById('Contact');
 
-document.getElementById('Projects').addEventListener('click', function() {
-    displayContent('This is Content 2.');
-});
+    informationButton.addEventListener('click', function () {
+        showContent('InformationContent');
+    });
 
-document.getElementById('Contact').addEventListener('click', function() {
-    displayContent('This is Content 3.');
-});
+    projectsButton.addEventListener('click', function () {
+        showContent('ProjectsContent');
+    });
 
-function displayContent(content) {
-    document.getElementById('contentDisplay').innerText = content;
-}
+    contactButton.addEventListener('click', function () {
+        showContent('ContactContent');
+    });
+
+    // Function to show content based on the provided contentId
+    function showContent(contentId) {
+        // Hide all content elements
+        const allContents = document.querySelectorAll('.content');
+        allContents.forEach(function (content) {
+            content.style.display = 'none';
+        });
+
+        // Show the selected content
+        const selectedContent = document.getElementById(contentId);
+        if (selectedContent) {
+            selectedContent.style.display = 'block';
+        }
+    }
+
+    // Show the 'InformationContent' div on page load
+    showContent('InformationContent');
+});
