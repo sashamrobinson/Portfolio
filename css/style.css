@@ -4,10 +4,11 @@ body {
     padding: 0;
     color: #fff;
     font-family: 'Helvetica Neue', sans-serif; 
+    overflow: hidden;
 }
 
 .threejs-background {
-    position: relative;
+    position: absolute;
     top: 5vh;
     left: 5vh;
     bottom: 5vh;
