@@ -4,16 +4,53 @@ document.addEventListener('DOMContentLoaded', function () {
     const projectsButton = document.getElementById('Projects');
     const contactButton = document.getElementById('Contact');
 
+    const informationContent = document.getElementById("InformationContent");
+    const projectsContent = document.getElementById("ProjectsContent");
+    const contactContent = document.getElementById("ContactContent");
+
+    function hideAllContent() {
+        informationContent.classList.add("hidden");
+        projectsContent.classList.add("hidden");
+        contactContent.classList.add("hidden");
+        informationContent.classList.remove("showing");
+        projectsContent.classList.remove("showing");
+        contactContent.classList.remove("showing");
+    }
+
+    function addShowing() {
+        informationContent.classList.add("showing");
+        projectsContent.classList.add("showing");
+        contactContent.classList.add("showing");
+    }
+
     informationButton.addEventListener('click', function () {
-        showContent('InformationContent');
+        hideAllContent();
+        
+        // Wait 0.5 seconds
+        setTimeout(function() {
+            showContent('InformationContent');
+            informationContent.classList.add("showing");
+        }, 500);
     });
 
     projectsButton.addEventListener('click', function () {
-        showContent('ProjectsContent');
+        hideAllContent();
+
+        // Wait 0.5 seconds
+        setTimeout(function() {
+            showContent('ProjectsContent');
+            projectsContent.classList.add("showing");
+        }, 500);
     });
 
     contactButton.addEventListener('click', function () {
-        showContent('ContactContent');
+        hideAllContent();
+
+        // Wait 0.5 seconds
+        setTimeout(function() {
+            showContent('ContactContent');
+            contactContent.classList.add("showing");
+        }, 500);
     });
 
     // Function to show content based on the provided contentId

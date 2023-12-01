@@ -26,7 +26,7 @@ let phiArray = [];
 // Set initial positions and colors for the particles forming a sphere
 for (let i = 0; i < particleCount; i++) {
   const i3 = i * 3;
-  const radius = 1;
+  const radius = 1.5;
 
   // Distribute particles evenly on the surface of a sphere
   const phi = Math.acos(-1 + (2 * i) / particleCount);
